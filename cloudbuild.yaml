@@ -6,3 +6,6 @@ steps:
       'us-central1-docker.pkg.dev/nestjs-devops/nestjs-crud-app/production',
       '.'
     ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/nestjs-devops/nestjs-crud-app/production']
