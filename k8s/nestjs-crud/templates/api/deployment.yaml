@@ -15,6 +15,7 @@ spec:
       name: api
       labels:
         app: api
+        date: "{{ now | unixEpoch }}"
     spec:
       containers:
         - name: api
