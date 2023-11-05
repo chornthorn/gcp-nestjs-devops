@@ -9,3 +9,17 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/nestjs-devops/nestjs-crud-app/production']
+
+  - name: 'gcr.io/$PROJECT_ID/helm:3.12.0'
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1-c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=gcp-nestjs-devops'
+    args: [
+      'upgrade',
+      'nestjs-crud-app',
+      'k8s/nestjs-crud',
+      '--namespace',
+      'nestjs-crud',
+      '--install'
+    ]

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: nestjs-crud
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      name: api
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: us-central1-docker.pkg.dev/nestjs-devops/nestjs-crud-app/production:latest
+          imagePullPolicy: Always
+          ports:
+              - containerPort: 3000
+      restartPolicy: Always
+      
