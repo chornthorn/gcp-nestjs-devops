@@ -11,6 +11,8 @@ async function bootstrap() {
     defaultVersion: '1.0',
   });
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Nestjs CRUD app')
     .setDescription('The CRUD API description')
